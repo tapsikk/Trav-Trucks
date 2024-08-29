@@ -21,15 +21,23 @@ const campersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCampers.pending, handlePending)
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.hasLoaded = true;
-        state.items = [...state.items, ...action.payload.data];
-        state.totalCount = action.payload.totalCount;
+
+        const { items, totalCount } = action.payload; // Деструктуризация непосредственно из action.payload
+
+        if (Array.isArray(items)) {
+          state.items = [...state.items, ...items];
+        } else {
+          console.error("Unexpected data format:", action.payload);
+        }
+
+        state.totalCount = totalCount;
       })
-      .addCase(fetchCampers.rejected, handleRejected);
+      .addCase(fetchCampers.rejected, handleRejected)
+      .addCase(fetchCampers.pending, handlePending);
   },
 });
 

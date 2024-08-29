@@ -12,16 +12,16 @@ const CampersList = ({ mode }) => {
   const favCampers = useSelector(selectAllFavCampers);
   const items = mode === "catalogue" ? campers : favCampers;
   const dispatch = useDispatch();
-  const [modalIsOpen, setModailIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false); // Исправлено название функции
   const [selectedCamper, setCamper] = useState({});
 
   const handleOpenModal = (camper) => {
     setCamper(camper);
-    setModailIsOpen(true);
+    setModalIsOpen(true);
   };
 
   const closeModal = () => {
-    setModailIsOpen(false);
+    setModalIsOpen(false);
   };
 
   const toggleFav = (camper) => {
@@ -48,12 +48,11 @@ const CampersList = ({ mode }) => {
 
   return (
     <>
-      {" "}
       <ul className={styles.campersList}>
         {items.map((camper) => {
           return (
             <li className={styles.camper} key={camper._id}>
-              <img className={styles.camperImg} src={camper.gallery[0]} />
+              <img className={styles.camperImg} src={camper.gallery[0]} alt={camper.name} />
               <div className={styles.camperContent}>
                 <div className={styles.camperHeader}>
                   <p className={styles.camperName}>{camper.name}</p>
@@ -85,7 +84,7 @@ const CampersList = ({ mode }) => {
                     />
                     <p className={styles.camperRating}>
                       {camper.rating}
-                      {`(${camper.reviews.length} Reviews)`}
+                      {`(${camper.reviews?.length || 0} Reviews)`}
                     </p>
                   </div>
                   <div className={styles.camperLocationContainer}>
@@ -114,7 +113,7 @@ const CampersList = ({ mode }) => {
                   <li className={styles.camperDetail}>
                     <Icon width={20} height={20} id={"kitchen"} />
                     <p className={styles.camperDetailText}>
-                      {camper.details.kitchen > 1
+                      {camper.details?.kitchen > 1
                         ? `${camper.details.kitchen} Kitchens`
                         : "Kitchen"}
                     </p>
@@ -122,7 +121,7 @@ const CampersList = ({ mode }) => {
                   <li className={styles.camperDetail}>
                     <Icon width={20} height={20} id={"bed"} />
                     <p className={styles.camperDetailText}>
-                      {camper.details.beds} beds
+                      {camper.details?.beds} beds
                     </p>
                   </li>
                   <li className={styles.camperDetail}>

@@ -9,6 +9,8 @@
   z-index: 1000;
   padding: 28px;
   position: fixed;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .navContainer {
@@ -34,13 +36,10 @@
 }
 
 .navLink {
-  color: #101828; /* Цвет для неактивных ссылок */
-  font-size: 18px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
+  color: #101828;
 }
 
 .activeNavLink {
-  color: #e44848; /* Цвет для активной ссылки */
+  color: #e44848;
+  transition: color 0.3s;
 }
