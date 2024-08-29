@@ -1,6 +1,5 @@
 import BookingForm from "../BookingForm/BookingForm";
 import CamperDetailsList from "../CampersDetailsList/CamperDetailsList";
-
 import styles from "./Features.module.css";
 
 const Features = ({ camper }) => {
@@ -9,7 +8,7 @@ const Features = ({ camper }) => {
       <div className={styles.featuresContainer}>
         <CamperDetailsList camper={camper} />
         <div className={styles.vehicleDetailsContainer}>
-          <p className={styles.vehicleDetailsTItle}>Vehicle details</p>
+          <p className={styles.vehicleDetailsTitle}>Vehicle details</p>
           <span className={styles.stick}></span>
           <ul className={styles.vehicleDetailsList}>
             <li className={styles.vehicleDetailsListItem}>

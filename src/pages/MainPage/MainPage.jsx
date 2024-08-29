@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import styles from "./MainPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCampers } from "../../../redux/campers/operations";
+import { fetchCampers } from "../../redux/campers/operations";
 import {
   selectAllCampers,
   selectIsLoading,
-} from "../../../redux/campers/selectors";
-import CampersList from "../../CampersList/CampersList";
-import Loader from "../../Loader/Loader";
-import Navbar from "../../Navbar/Navbar";
+} from "../../redux/campers/selectors";
+import CampersList from "../../components/CampersList/CampersList";
+import Loader from "../../components/Loader/Loader";
+import Navbar from "../../components/Navbar/Navbar";
 
 const MainPage = () => {
   const [page, setPage] = useState(1);

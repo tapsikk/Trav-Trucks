@@ -12,7 +12,7 @@ const CampersList = ({ mode }) => {
   const favCampers = useSelector(selectAllFavCampers);
   const items = mode === "catalogue" ? campers : favCampers;
   const dispatch = useDispatch();
-  const [modalIsOpen, setModalIsOpen] = useState(false); // Исправлено название функции
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedCamper, setCamper] = useState({});
 
   const handleOpenModal = (camper) => {
@@ -26,15 +26,12 @@ const CampersList = ({ mode }) => {
 
   const toggleFav = (camper) => {
     const isCamperInFavList = favCampers.some(
-      (favCamper) => favCamper._id === camper._id
+      (favCamper) => favCamper.id === camper.id
     );
-    console.log(isCamperInFavList);
     if (!isCamperInFavList) {
-      console.log("added");
       dispatch(addToFavList(camper));
     } else {
-      console.log("removed");
-      dispatch(removeFromFavList(camper._id));
+      dispatch(removeFromFavList(camper.id));
     }
   };
 
@@ -49,97 +46,80 @@ const CampersList = ({ mode }) => {
   return (
     <>
       <ul className={styles.campersList}>
-        {items.map((camper) => {
-          return (
-            <li className={styles.camper} key={camper._id}>
-              <img className={styles.camperImg} src={camper.gallery[0]} alt={camper.name} />
-              <div className={styles.camperContent}>
-                <div className={styles.camperHeader}>
-                  <p className={styles.camperName}>{camper.name}</p>
-                  <div className={styles.camperPriceContainer}>
-                    <p>€{camper.price}.00 </p>
-                    <button
-                      type="button"
-                      aria-label="Add to favourites"
-                      onClick={() => toggleFav(camper)}
-                      className={styles.favButton}
-                    >
-                      {favCampers.some(
-                        (favCamper) => favCamper._id === camper._id
-                      ) ? (
-                        <Icon id={"heart-red"} width={25} height={25} />
-                      ) : (
-                        <Icon id={"heart"} width={25} height={25} />
-                      )}
-                    </button>
-                  </div>
+        {items.map((camper) => (
+          <li className={styles.camper} key={camper.id}>
+            <img
+              className={styles.camperImg}
+              src={camper.gallery[0].thumb}
+              alt={camper.name}
+            />
+            <div className={styles.camperContent}>
+              <div className={styles.camperHeader}>
+                <p className={styles.camperName}>{camper.name}</p>
+                <div className={styles.camperPriceContainer}>
+                  <p>€{camper.price}.00</p>
+                  <button
+                    type="button"
+                    aria-label="Add to favourites"
+                    onClick={() => toggleFav(camper)}
+                    className={styles.favButton}
+                  >
+                    {favCampers.some((favCamper) => favCamper.id === camper.id) ? (
+                      <Icon id={"heart-red"} width={25} height={25} />
+                    ) : (
+                      <Icon id={"heart"} width={25} height={25} />
+                    )}
+                  </button>
                 </div>
-                <div className={styles.camperRatingAndLocation}>
-                  <div className={styles.camperRatingContainer}>
-                    <Icon
-                      id={"star"}
-                      width={25}
-                      height={25}
-                      fillColor="#ffc531"
-                    />
-                    <p className={styles.camperRating}>
-                      {camper.rating}
-                      {`(${camper.reviews?.length || 0} Reviews)`}
-                    </p>
-                  </div>
-                  <div className={styles.camperLocationContainer}>
-                    <Icon id={"map-pin"} width={16} height={16} />
-                    <p className={styles.camperLocation}>{camper.location}</p>
-                  </div>
-                </div>
-                <p className={styles.camperDescription}>{camper.description}</p>
-                <ul className={styles.camperDetailsList}>
-                  <li className={styles.camperDetail}>
-                    <Icon width={20} height={20} id={"people"} />
-                    <p className={styles.camperDetailText}>
-                      {camper.adults} Adults
-                    </p>
-                  </li>
-                  <li className={styles.camperDetail}>
-                    <Icon width={20} height={20} id={"transmission"} />
-                    <p className={styles.camperDetailText}>
-                      {camper.transmission}
-                    </p>
-                  </li>
-                  <li className={styles.camperDetail}>
-                    <Icon width={20} height={20} id={"petrol"} />
-                    <p className={styles.camperDetailText}>{camper.engine}</p>
-                  </li>
-                  <li className={styles.camperDetail}>
-                    <Icon width={20} height={20} id={"kitchen"} />
-                    <p className={styles.camperDetailText}>
-                      {camper.details?.kitchen > 1
-                        ? `${camper.details.kitchen} Kitchens`
-                        : "Kitchen"}
-                    </p>
-                  </li>
-                  <li className={styles.camperDetail}>
-                    <Icon width={20} height={20} id={"bed"} />
-                    <p className={styles.camperDetailText}>
-                      {camper.details?.beds} beds
-                    </p>
-                  </li>
-                  <li className={styles.camperDetail}>
-                    <Icon width={20} height={20} id={"ac"} />
-                    <p className={styles.camperDetailText}>AC</p>
-                  </li>
-                </ul>
-                <button
-                  className={styles.showMoreButton}
-                  onClick={() => handleOpenModal(camper)}
-                  type="button"
-                >
-                  Show more
-                </button>
               </div>
-            </li>
-          );
-        })}
+              <div className={styles.camperRatingAndLocation}>
+                <div className={styles.camperRatingContainer}>
+                  <Icon id={"star"} width={25} height={25} fillColor="#ffc531" />
+                  <p className={styles.camperRating}>
+                    {camper.rating}
+                    {`(${camper.reviews?.length || 0} Reviews)`}
+                  </p>
+                </div>
+                <div className={styles.camperLocationContainer}>
+                  <Icon id={"map-pin"} width={16} height={16} />
+                  <p className={styles.camperLocation}>{camper.location}</p>
+                </div>
+              </div>
+              <p className={styles.camperDescription}>{camper.description}</p>
+              <ul className={styles.camperDetailsList}>
+                <li className={styles.camperDetail}>
+                  <Icon width={20} height={20} id={"people"} />
+                  <p className={styles.camperDetailText}>{camper.adults} Adults</p>
+                </li>
+                <li className={styles.camperDetail}>
+                  <Icon width={20} height={20} id={"transmission"} />
+                  <p className={styles.camperDetailText}>{camper.transmission}</p>
+                </li>
+                <li className={styles.camperDetail}>
+                  <Icon width={20} height={20} id={"petrol"} />
+                  <p className={styles.camperDetailText}>{camper.engine}</p>
+                </li>
+                <li className={styles.camperDetail}>
+                  <Icon width={20} height={20} id={"kitchen"} />
+                  <p className={styles.camperDetailText}>
+                    {camper.kitchen ? "Kitchen" : "No Kitchen"}
+                  </p>
+                </li>
+                <li className={styles.camperDetail}>
+                  <Icon width={20} height={20} id={"ac"} />
+                  <p className={styles.camperDetailText}>{camper.AC ? "AC" : "No AC"}</p>
+                </li>
+              </ul>
+              <button
+                className={styles.showMoreButton}
+                onClick={() => handleOpenModal(camper)}
+                type="button"
+              >
+                Show more
+              </button>
+            </div>
+          </li>
+        ))}
       </ul>
       {modalIsOpen && (
         <ModalWindow

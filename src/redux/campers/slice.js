@@ -26,7 +26,9 @@ const campersSlice = createSlice({
         state.error = null;
         state.hasLoaded = true;
 
-        const { items, totalCount } = action.payload; // Деструктуризация непосредственно из action.payload
+        console.log("Action Payload:", action.payload); // Логирование payload
+
+        const { items, totalCount } = action.payload;
 
         if (Array.isArray(items)) {
           state.items = [...state.items, ...items];
