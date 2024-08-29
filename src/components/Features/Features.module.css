@@ -1,0 +1,41 @@
+.container {
+  padding-top: 44px;
+  display: flex;
+  gap: 24px;
+}
+
+.featuresContainer {
+  max-width: 48%;
+}
+
+.vehicleDetailsTItle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+}
+
+.stick {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: rgba(16, 24, 40, 0.1);
+  margin: 24px 0;
+}
+
+.vehicleDetailsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.vehicleDetailsListItem {
+  display: flex;
+  justify-content: space-between;
+
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 133%;
+  color: var(--main);
+  text-transform: capitalize;
+}
