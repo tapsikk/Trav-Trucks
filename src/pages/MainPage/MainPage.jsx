@@ -43,7 +43,6 @@ const MainPage = () => {
       <Navbar />
       <section>
         <div className={styles.container}>
-          <h1 className={styles.title}>Our Сatalogue</h1>
           <CampersList mode={"catalogue"} />
           {items.length < totalCount && (
             <button

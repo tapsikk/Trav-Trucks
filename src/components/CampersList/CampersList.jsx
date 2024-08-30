@@ -7,10 +7,10 @@ import { addToFavList, removeFromFavList } from "../../redux/user/slice";
 import { useEffect, useState } from "react";
 import ModalWindow from "../ModalWindow/ModalWindow";
 
-const CampersList = ({ mode }) => {
+const CampersList = ({ camper }) => {
   const campers = useSelector(selectAllCampers);
   const favCampers = useSelector(selectAllFavCampers);
-  const items = mode === "catalogue" ? campers : favCampers;
+  const items = camper === "catalogue" ? campers : favCampers;
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedCamper, setCamper] = useState({});
@@ -57,7 +57,7 @@ const CampersList = ({ mode }) => {
               <div className={styles.camperHeader}>
                 <p className={styles.camperName}>{camper.name}</p>
                 <div className={styles.camperPriceContainer}>
-                  <p>€{camper.price}.00</p>
+                  <p>€{camper.price},00</p>
                   <button
                     type="button"
                     aria-label="Add to favourites"
@@ -88,25 +88,25 @@ const CampersList = ({ mode }) => {
               <p className={styles.camperDescription}>{camper.description}</p>
               <ul className={styles.camperDetailsList}>
                 <li className={styles.camperDetail}>
-                  <Icon width={20} height={20} id={"people"} />
+                  <Icon id={"people"} width={20} height={20} />
                   <p className={styles.camperDetailText}>{camper.adults} Adults</p>
                 </li>
                 <li className={styles.camperDetail}>
-                  <Icon width={20} height={20} id={"transmission"} />
+                  <Icon id={"transmission"} width={20} height={20} />
                   <p className={styles.camperDetailText}>{camper.transmission}</p>
                 </li>
                 <li className={styles.camperDetail}>
-                  <Icon width={20} height={20} id={"petrol"} />
+                  <Icon id={"petrol"} width={20} height={20} />
                   <p className={styles.camperDetailText}>{camper.engine}</p>
                 </li>
                 <li className={styles.camperDetail}>
-                  <Icon width={20} height={20} id={"kitchen"} />
+                  <Icon id={"kitchen"} width={20} height={20} />
                   <p className={styles.camperDetailText}>
                     {camper.kitchen ? "Kitchen" : "No Kitchen"}
                   </p>
                 </li>
                 <li className={styles.camperDetail}>
-                  <Icon width={20} height={20} id={"ac"} />
+                  <Icon  id={"ac"} width={20} height={20} />
                   <p className={styles.camperDetailText}>{camper.AC ? "AC" : "No AC"}</p>
                 </li>
               </ul>
