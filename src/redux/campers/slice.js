@@ -22,22 +22,22 @@ const campersSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchCampers.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.hasLoaded = true;
+    state.isLoading = false;
+    state.error = null;
+    state.hasLoaded = true;
 
-        console.log("Action Payload:", action.payload); // Логирование payload
+    console.log("Action Payload:", action.payload); // Логирование payload
 
-        const { items, totalCount } = action.payload;
+    const { items, totalCount } = action.payload;
 
-        if (Array.isArray(items)) {
-          state.items = [...state.items, ...items];
-        } else {
-          console.error("Unexpected data format:", action.payload);
-        }
+    if (Array.isArray(items)) {
+        state.items = [...state.items, ...items];
+    } else {
+        console.error("Unexpected data format:", action.payload);
+    }
 
-        state.totalCount = totalCount;
-      })
+    state.totalCount = totalCount;
+})
       .addCase(fetchCampers.rejected, handleRejected)
       .addCase(fetchCampers.pending, handlePending);
   },
