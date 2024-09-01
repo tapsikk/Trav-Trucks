@@ -8,6 +8,7 @@ import styles from "./BookingForm.module.css";
 const BookingForm = () => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false); // Добавлено состояние для успешной отправки
 
   const validationSchema = Yup.object({
     name: Yup.string().min(2, "Too short").required("Required field"),
@@ -29,9 +30,12 @@ const BookingForm = () => {
     setShowCalendar(false);
   };
 
-  const onSubmit = (values) => {
+  const onSubmit = (values, { resetForm }) => {
     console.log("Form submitted with values:", values);
-    window.location.reload();
+    setIsSubmitted(true); // Устанавливаем состояние для успешной отправки
+    resetForm(); // Очищаем форму после отправки
+    setSelectedDate(null); // Сбрасываем выбранную дату
+    setTimeout(() => setIsSubmitted(false), 3000); // Убираем уведомление через 3 секунды
   };
 
   return (
@@ -50,7 +54,7 @@ const BookingForm = () => {
             <div>
               <Field
                 name="name"
-                placeholder="Name"
+                placeholder="Name*"
                 type="text"
                 className={styles.input}
               />
@@ -65,7 +69,7 @@ const BookingForm = () => {
               <Field
                 name="email"
                 type="email"
-                placeholder="Email"
+                placeholder="Email*"
                 className={styles.input}
               />
               <ErrorMessage
@@ -81,7 +85,7 @@ const BookingForm = () => {
                   <>
                     <input
                       {...field}
-                      placeholder="Booking date"
+                      placeholder="Booking date*"
                       value={
                         selectedDate ? selectedDate.toLocaleDateString() : ""
                       }
@@ -127,6 +131,12 @@ const BookingForm = () => {
                 className={styles.error}
               />
             </div>
+
+            {isSubmitted && (
+              <div className={styles.successMessage}>
+                Camper booked successfully!
+              </div>
+            )}
 
             <button className={styles.submitButton} type="submit">
               Send

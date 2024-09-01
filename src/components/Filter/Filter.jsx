@@ -75,6 +75,7 @@ const Filter = ({ filters, setFilters, applyFilters }) => {
         <label htmlFor="location" className={styles.filterInput}> 
         <Icon id={"location"} width={25} height={25} />
           <input
+            placeholder="Сountry, Сity..."
             type="text"
             id="location"
             name="location"

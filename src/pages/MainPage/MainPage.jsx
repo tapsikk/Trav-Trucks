@@ -27,7 +27,6 @@ const MainPage = () => {
             );
           }}/>
           <div style={{display: "flex",flexDirection:'column', alignItems:'center'}}>
-
             <CampersList mode={"catalogue"} filters={filters} />
           </div>
           </div>

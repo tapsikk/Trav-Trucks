@@ -7,7 +7,6 @@ const Navbar = () => {
       <div className={styles.brand}>
         Travel<span className={styles.brandSub}>Trucks</span>
       </div>
-      <div className={styles.navContainer}>
         <div className={styles.navLinks}>
           <NavLink
             to="/"
@@ -26,7 +25,6 @@ const Navbar = () => {
             Catalog
           </NavLink>
         </div>
-      </div>
     </nav>
   );
 };

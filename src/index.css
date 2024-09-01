@@ -4,8 +4,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: "Inter", sans-serif;
   color: var(--main-text);
+  
 }
-
+html {
+  scrollbar-gutter: stable;
+}
 :root {
   --button: #e44848;
   --main: #101828;

@@ -90,3 +90,11 @@
 .submitButton:active {
   background: #d84343;
 }
+
+.successMessage {
+  margin-top: 10px;
+  color: #28a745; /* Зелёный цвет для текста */
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+}
