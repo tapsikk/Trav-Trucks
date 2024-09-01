@@ -1,7 +1,9 @@
 .container {
-  max-width: 888px;
-  padding: 100px 0;
+  max-width: 100%;
+  padding: 100px 0 0;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .loadMoreButton {

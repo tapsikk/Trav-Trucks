@@ -1,3 +1,4 @@
+
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./CampersList.module.css";
 import Icon from "../Icon/Icon";
@@ -7,13 +8,27 @@ import { addToFavList, removeFromFavList } from "../../redux/user/slice";
 import { useEffect, useState } from "react";
 import ModalWindow from "../ModalWindow/ModalWindow";
 
-const CampersList = ({ mode }) => {
+const CampersList = ({ mode, filters }) => {
   const campers = useSelector(selectAllCampers);
   const favCampers = useSelector(selectAllFavCampers);
   const items = mode === "catalogue" ? campers : favCampers;
   const dispatch = useDispatch();
   const [modalIsOpen, setModailIsOpen] = useState(false);
   const [selectedCamper, setCamper] = useState({});
+  const filteredItems = items.filter((camper) => {
+    const matchesLocation =
+      filters.location === "" ||
+      camper.location.toLowerCase().includes(filters.location.toLowerCase());
+
+    const matchesType =
+      filters.type === "" || camper.type === filters.type;
+
+    const matchesEquipment = filters.equipment.every((eq) =>
+      camper.equipment.includes(eq)
+    );
+
+    return matchesLocation && matchesType && matchesEquipment;
+  });
 
   const handleOpenModal = (camper) => {
     setCamper(camper);
@@ -50,9 +65,9 @@ const CampersList = ({ mode }) => {
     <>
       {" "}
       <ul className={styles.campersList}>
-        {items.map((camper) => {
+        {filteredItems.map((camper) => {
           return (
-            <li className={styles.camper} key={camper._id}>
+            <li className={styles.camper} key={camper.id}>
               <img className={styles.camperImg} src={camper.gallery[0].thumb} />
               <div className={styles.camperContent}>
                 <div className={styles.camperHeader}>

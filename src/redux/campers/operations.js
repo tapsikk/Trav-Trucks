@@ -12,7 +12,7 @@ export const fetchCampers = createAsyncThunk(
         params: { page, limit },
       });
       console.log("Response Data:", res.data); // Логирование данных ответа
-
+      
       return {
         items: res.data.items, // Здесь возвращаем массив items
         totalCount: res.data.total, // И общее количество из total

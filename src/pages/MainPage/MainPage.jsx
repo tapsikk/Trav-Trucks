@@ -9,9 +9,15 @@ import {
 import CampersList from "../../components/CampersList/CampersList";
 import Loader from "../../components/Loader/Loader";
 import Navbar from "../../components/Navbar/Navbar";
+import Filter from "../../components/Filter/Filter";
 
 const MainPage = () => {
   const [page, setPage] = useState(1);
+  const [filters, setFilters] = useState({
+    location: "",
+    type: "",
+    equipment: [],
+  }); // State for the filters
 
   const dispatch = useDispatch();
 
@@ -23,19 +29,13 @@ const MainPage = () => {
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
   };
-
   useEffect(() => {
-    if (items.length === 0) {
-      dispatch(fetchCampers(1, limit));
-    }
-  }, [dispatch, items.length, limit]);
-
-  useEffect(() => {
-    if (page > 1) {
+    // Fetch campers only when the items array is empty or the page changes
+    if (items.length === 0 || page > 1) {
       dispatch(fetchCampers({ page, limit }));
     }
-  }, [dispatch, page, limit]);
-
+  }, [dispatch, items.length, page, limit]);
+  
   return isLoading && items.length === 0 ? (
     <Loader />
   ) : (
@@ -43,7 +43,9 @@ const MainPage = () => {
       <Navbar />
       <section>
         <div className={styles.container}>
-          <CampersList mode={"catalogue"} />
+          <Filter filters={filters} setFilters={setFilters} />
+          <CampersList mode={"catalogue"} filters={filters} /> 
+        </div>
           {items.length < totalCount && (
             <button
               type="button"
@@ -53,7 +55,6 @@ const MainPage = () => {
               Load more
             </button>
           )}
-        </div>
       </section>
     </>
   );

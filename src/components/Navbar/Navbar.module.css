@@ -24,6 +24,7 @@
   color: #101828; /* Цвет для текста бренда */
   font-size: 20px;
   font-weight: bold;
+  font-weight: 800;
   left: 64px;
 .brandSub{
   color: #475467;

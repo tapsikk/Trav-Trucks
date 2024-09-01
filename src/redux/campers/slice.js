@@ -31,7 +31,11 @@ const campersSlice = createSlice({
     const { items, totalCount } = action.payload;
 
     if (Array.isArray(items)) {
-        state.items = [...state.items, ...items];
+      const existingIds = new Set(state.items.map(item => item.id));
+
+      const newItems = items.filter(item => !existingIds.has(item.id));
+
+      state.items = [...state.items, ...newItems];
     } else {
         console.error("Unexpected data format:", action.payload);
     }
