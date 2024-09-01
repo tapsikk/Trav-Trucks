@@ -45,9 +45,10 @@ const ModalWindow = ({ isOpen, closeModal, camper }) => {
         </div>
         <PerfectScrollbar className={styles.scrollbarContainer}>
           <div className={styles.camperImgContainer}>
-            {camper.gallery.map((image) => (
-              <img src={image} className={styles.camperImg} key={nanoid()} />
-            ))}
+            {camper.gallery.map((image) => {
+              return <img src={image.thumb} className={styles.camperImg} key={nanoid()} />
+            }
+            )}
           </div>
           <p className={styles.camperDescription}>{camper.description}</p>
           <div className={styles.camprerDetailInfoContainer}>

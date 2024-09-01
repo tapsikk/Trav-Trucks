@@ -13,7 +13,7 @@ const usersSlice = createSlice({
     removeFromFavList(state, action) {
       const camperId = action.payload;
       state.favCampers = state.favCampers.filter(
-        (camper) => camper._id !== camperId
+        (camper) => camper.id !== camperId
       );
     },
   },

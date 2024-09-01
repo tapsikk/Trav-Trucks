@@ -19,14 +19,19 @@ const campersSlice = createSlice({
     hasLoaded: false,
     totalCount: 0,
   },
+  reducers: {
+    // Reducer to reset the campers list
+    resetCampersList: (state) => {
+      state.items = [];
+      state.totalCount = 0;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCampers.fulfilled, (state, action) => {
     state.isLoading = false;
     state.error = null;
     state.hasLoaded = true;
-
-    console.log("Action Payload:", action.payload); // Логирование payload
 
     const { items, totalCount } = action.payload;
 
@@ -47,4 +52,5 @@ const campersSlice = createSlice({
   },
 });
 
+export const { resetCampersList } = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;

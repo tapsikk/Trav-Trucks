@@ -33,7 +33,7 @@ const Filter = ({ filters, setFilters, applyFilters }) => {
     },
     {
       iconName: "kitchen",
-      filterName: "Kitchen",
+      filterName: "kitchen",
       text: "Kitchen"
     },
     {
@@ -43,10 +43,27 @@ const Filter = ({ filters, setFilters, applyFilters }) => {
     },
     {
       iconName: "toilet",
-      filterName: "Bathroom",
+      filterName: "bathroom",
       text:"Bathroom"
     },
     
+  ]
+  const vehicleTypeFilters = [
+    {
+      iconName: "van",
+      filterName: "panelTruck",
+      text: "Van"
+    },
+    {
+      iconName: "fullyIntegrated",
+      filterName: "fullyIntegrated",
+      text: "Fully Integrated"
+    },
+    {
+      iconName: "alcove",
+      filterName: "alcove",
+      text: "Alcove"
+    }
   ]
 
   return (
@@ -56,7 +73,7 @@ const Filter = ({ filters, setFilters, applyFilters }) => {
           Location
         </label>
         <label htmlFor="location" className={styles.filterInput}> 
-        <Icon id={"ac"} width={25} height={25} />
+        <Icon id={"location"} width={25} height={25} />
           <input
             type="text"
             id="location"
@@ -96,47 +113,22 @@ const Filter = ({ filters, setFilters, applyFilters }) => {
       <div className={styles.filterSection}>
         <h4 className={styles.filterTitle}>Vehicle Type</h4>
         <div className={styles.filterButtonGroup}>
-          <button
+        {vehicleTypeFilters.map((obj)=>{
+            return <button
+            key={obj.filterName}
             type="button"
             className={`${styles.filterButton} ${
-              filters.type === "Van" ? styles.active : ""
+              filters.type === obj.filterName ? styles.active : ""
             }`}
             onClick={() =>
-              handleInputChange({ target: { name: "type", value: "Van" } })
+              handleInputChange({ target: { name: "type", value: obj.filterName === filters.type ? null : obj.filterName } })
             }
           >
-            <Icon id={"ac"} width={25} height={25} />
-            Van
-          </button>
-          <button
-            type="button"
-            className={`${styles.filterButton} ${
-              filters.type === "Fully Integrated" ? styles.active : ""
-            }`}
-            onClick={() =>
-              handleInputChange({
-                target: { name: "type", value: "Fully Integrated" },
-              })
-            }
-          >
-            <Icon id={"ac"} width={25} height={25} />
-            Fully Integrated
-          </button>
-          <button
-            type="button"
-            className={`${styles.filterButton} ${
-              filters.type === "Alcove" ? styles.active : ""
-            }`}
-            onClick={() =>
-              handleInputChange({ target: { name: "type", value: "Alcove" } })
-            }
-          >
-            <Icon id={"ac"} width={25} height={25} />
-            Alcove
-          </button>
+            <Icon id={obj.iconName} width={25} height={25} />
+            {obj.text}
+          </button>})}
         </div>
       </div>
-
       <button
         type="button"
         className={styles.filterApplyButton}

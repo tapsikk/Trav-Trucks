@@ -7,6 +7,10 @@
 
 .filterHeader {
   margin-bottom: 24px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #475467;
 }
 
 .filterSection {
@@ -14,12 +18,14 @@
 }
 
 .filterLabel {
+  color: grey;
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 8px;
-  font-weight: bold;
+  font-weight: 400;
+  line-height: 150%;
 }
 
 .filterIcon {
@@ -38,39 +44,41 @@
   border: none;
   border-radius: 12px;
   font-size: 16px;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
 }
 
 .filterTitle {
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   color: #101828;
 }
 
 .filterButtonGroup {
+  border-top: 1px solid #d0d5dd;
+  padding-top: 24px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
 
 .hiddenInput {
-    border: none;
-    outline: none;
-    background: none;
-    padding: 0;
-    margin: 0;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
 
-    font-family: inherit;
-    font-size: inherit;
-    color: inherit;
-    width: 100%;
-    box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hiddenInput:focus {
-    outline: none;
-    box-shadow: none;
+  outline: none;
+  box-shadow: none;
 }
 
 .filterButton {
@@ -78,8 +86,8 @@
   width: 100px;
   padding: 6px;
   height: 96px;
-  background-color: #FFFFFF;
-  border: 1px solid #D0D5DD;
+  background-color: #ffffff;
+  border: 1px solid #d0d5dd;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -93,18 +101,19 @@
 }
 
 .filterButton.active {
-  border-color: #E44848;
+  border-color: #e44848;
 }
 
 .filterApplyButton {
-  width: 100%;
+  width: 166px;
+  height: 56px;
   padding: 12px;
   background-color: #e44848;
   color: white;
   font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
+  line-height: 150%;
+  font-weight: 500;
+  border-radius: 200px;
   cursor: pointer;
 }
 
