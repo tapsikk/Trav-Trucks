@@ -23,8 +23,10 @@
   min-width: 624px;
   height: 300px;
 }
+
+/* fix */
 .camperContent {
-  width: 526px;
+  max-width: 526px;
 }
 
 .camperImg {
@@ -39,7 +41,6 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 6px;
-
   font-size: 24px;
   line-height: 125%;
   font-weight: 600;
@@ -157,4 +158,71 @@
 .loadMoreButton:hover,
 .loadMoreButton:active {
   border: 1px solid var(--button);
+}
+
+
+/* ======== media ======== */
+
+@media (max-width: 1345px) {
+  .camper {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .camperHeader {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+  }
+  
+
+  .camperContent {
+    max-width: 300px;
+  }
+
+  .camperImg {
+    width: 290px;
+    height: 310px;
+  }
+
+  .noVehicleContainer {
+    height: auto;
+    padding: 20px;
+  } 
+}
+
+/* Mobile (до 767px) */
+@media (max-width: 767px) {
+  .campersList {
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+
+  .camper {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .camperHeader {
+    font-size: 18px;
+  }
+
+  .camperRatingAndLocation {
+    font-size: 14px;
+  }
+
+  .showMoreButton,
+  .loadMoreButton {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+
+  .camperDetailsList {
+    gap: 4px;
+  }
+
+  .camperDetail {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
 }

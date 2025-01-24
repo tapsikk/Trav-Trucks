@@ -16,6 +16,7 @@
     "formik": "^2.4.6",
     "react": "^18.3.1",
     "react-calendar": "^5.0.0",
+    "react-compose": "^2.0.0",
     "react-dom": "^18.3.1",
     "react-loader-spinner": "^6.1.6",
     "react-modal": "^3.16.1",

@@ -4,11 +4,15 @@ import styles from "./Navbar.module.css";
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
-      <NavLink to="/" className={styles.brand}>
+      <NavLink 
+      to="/" 
+      className={styles.brand}>
         Trav
         <span className={styles.brandSub}>Trucks</span>
       </NavLink>
       <div className={styles.navLinks}>
+
+
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -17,6 +21,8 @@ const Navbar = () => {
         >
           Home
         </NavLink>
+
+
         <NavLink
           to="/catalog"
           className={({ isActive }) =>

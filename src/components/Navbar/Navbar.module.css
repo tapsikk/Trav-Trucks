@@ -24,6 +24,14 @@
   }
 }
 
+.brand:hover{
+  cursor: pointer;
+  color: #e44848;
+  .brandSub{
+    color: #ff8181;
+    }
+}
+
 .navLinks {
   display: flex;
  
