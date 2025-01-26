@@ -27,6 +27,8 @@
 /* fix */
 .camperContent {
   max-width: 526px;
+  max-width: 526px;
+
 }
 
 .camperImg {
@@ -121,16 +123,15 @@
 }
 
 .showMoreButton {
+  width: 200px;
   background: var(--button);
   border-radius: 200px;
   padding: 16px 40px;
-
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
   letter-spacing: -0.01em;
   color: #fff;
-
   transition: 0.125s ease-in-out;
 }
 
@@ -165,6 +166,8 @@
 
 @media (max-width: 1345px) {
   .camper {
+    max-width: 526px;
+    display: flex;
     flex-direction: column;
     gap: 16px;
   }
@@ -175,14 +178,14 @@
     font-size: 20px;
   }
   
-
   .camperContent {
-    max-width: 300px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .camperImg {
-    width: 290px;
-    height: 310px;
+    width: 100%;
   }
 
   .noVehicleContainer {

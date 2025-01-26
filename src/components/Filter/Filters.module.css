@@ -126,3 +126,102 @@
 .filterApplyButton:active {
   background-color: #b13434;
 }
+
+
+/* ======== media ======== */
+
+@media (max-width: 1345px) {
+  .filterContainer {
+    max-width: 100%;
+    width: auto;
+    padding: 16px 12px;
+  }
+
+  .filterHeader {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .filterTitle {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .filterSection {
+    margin-bottom: 20px;
+  }
+
+  .filterLabel {
+    font-size: 14px;
+    gap: 6px;
+  }
+
+  .filterInput {
+    height: 48px;
+    padding: 16px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  .filterButtonGroup {
+    gap: 8px;
+    padding-top: 16px;
+  }
+
+  .filterButton {
+    width: 120px;
+    height: 88px;
+    font-size: 14px;
+    padding: 4px;
+  }
+
+  .filterButton img {
+    margin-bottom: 6px;
+    max-width: 24px;
+    max-height: 24px;
+  }
+
+  .filterApplyButton {
+    width: 150px;
+    height: 48px;
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filterContainer {
+    padding: 12px;
+  }
+
+  .filterHeader,
+  .filterTitle {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .filterButtonGroup {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .filterButton {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    padding: 8px;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .filterButton img {
+    margin-right: 8px;
+    margin-bottom: 0;
+  }
+
+  .filterApplyButton {
+    width: 100%;
+    max-width: 200px;
+  }
+}
