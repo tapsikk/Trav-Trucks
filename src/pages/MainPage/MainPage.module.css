@@ -6,3 +6,17 @@
   padding: 100px 30px;
   gap: 10px;
 }
+
+@media screen and (max-width: 595px) {
+  .container {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 30px;
+    gap: 10px;
+  }
+  
+}
