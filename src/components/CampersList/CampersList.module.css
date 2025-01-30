@@ -24,11 +24,8 @@
   height: 300px;
 }
 
-/* fix */
 .camperContent {
   max-width: 526px;
-  max-width: 526px;
-
 }
 
 .camperImg {
@@ -56,8 +53,43 @@
 }
 
 .favButton {
-  background-color: transparent;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
 }
+
+.favButton.animated {
+  animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.favButton.removing {
+  animation: shrink 0.2s ease-in-out;
+}
+
+@keyframes shrink {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+
 
 .camperRatingAndLocation {
   display: flex;
@@ -194,7 +226,6 @@
   } 
 }
 
-/* Mobile (до 767px) */
 @media (max-width: 767px) {
   .campersList {
     gap: 16px;

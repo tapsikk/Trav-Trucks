@@ -21,56 +21,53 @@ const CampersList = ({ mode, filters }) => {
   const totalCount = useSelector(selectTotalCount);
   const items = mode === "catalogue" ? campers : favCampers;
 
-  const [modalIsOpen, setModailIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedCamper, setCamper] = useState({});
+  const [animatingFavs, setAnimatingFavs] = useState({});
 
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
   useEffect(() => {
-    if (items.length === 0 || page > 1) {
-      dispatch(fetchCampers({ page, limit, filters: filters }));
-    }
-  }, [dispatch, items.length, page, limit]);
+    dispatch(fetchCampers({ page, limit, filters }));
+  }, [dispatch, page, filters]);
 
   const handleOpenModal = (camper) => {
     setCamper(camper);
-    setModailIsOpen(true);
+    setModalIsOpen(true);
   };
 
   const closeModal = () => {
-    setModailIsOpen(false);
+    setModalIsOpen(false);
   };
-
-  // const toggleFav = (camper) => {
-  //   const isCamperInFavList = favCampers.some(
-  //     (favCamper) => favCampper._id === camper._id
-  //   );
-  //   if (!isCamperInFavList) {
-  //     dispatch(addToFavList(camper));
-  //   } else {
-  //     dispatch(removeFromFavList(camper._id));
-  //   }
-  // };
 
   const toggleFav = (camper) => {
     const isCamperInFavList = favCampers.some(
       (favCamper) => favCamper.id === camper.id
     );
-    if (!isCamperInFavList) {
-      dispatch(addToFavList(camper));
-    } else {
-      dispatch(removeFromFavList(camper.id));
-    }
+
+    setAnimatingFavs((prev) => ({
+      ...prev,
+      [camper.id]: isCamperInFavList ? "removing" : "animated",
+    }));
+
+    setTimeout(() => {
+      if (!isCamperInFavList) {
+        dispatch(addToFavList(camper));
+      } else {
+        dispatch(removeFromFavList(camper.id));
+      }
+
+      setAnimatingFavs((prev) => ({
+        ...prev,
+        [camper.id]: "",
+      }));
+    }, 200);
   };
-  
+
   useEffect(() => {
-    if (modalIsOpen) {
-      document.body.classList.add(styles.noScroll);
-    } else {
-      document.body.classList.remove(styles.noScroll);
-    }
+    document.body.classList.toggle(styles.noScroll, modalIsOpen);
   }, [modalIsOpen]);
 
   return (
@@ -93,29 +90,21 @@ const CampersList = ({ mode, filters }) => {
                       type="button"
                       aria-label="Add to favourites"
                       onClick={() => toggleFav(camper)}
-                      className={styles.favButton}
+                      className={`${styles.favButton} ${
+                        styles[animatingFavs[camper.id]] || ""
+                      }`}
                     >
-                      {favCampers.some(
-                        (favCamper) => favCamper.id === camper.id
-                      ) ? (
-                        <Icon id={"heart-red"} width={25} height={25} />
-                      ) : (
-                        <Icon id={"heart"} width={25} height={25} />
-                      )}
+                      {favCampers.some((favCamper) => favCamper.id === camper.id)
+                        ? <Icon id={"heart-red"} width={25} height={25} />
+                        : <Icon id={"heart"} width={25} height={25} />}
                     </button>
                   </div>
                 </div>
                 <div className={styles.camperRatingAndLocation}>
                   <div className={styles.camperRatingContainer}>
-                    <Icon
-                      id={"star"}
-                      width={25}
-                      height={25}
-                      fillColor="#ffc531"
-                    />
+                    <Icon id={"star"} width={25} height={25} fillColor="#ffc531" />
                     <p className={styles.camperRating}>
-                      {camper.rating}
-                      {`(${camper.reviews.length} Reviews)`}
+                      {camper.rating} ({camper.reviews.length} Reviews)
                     </p>
                   </div>
                   <div className={styles.camperLocationContainer}>
@@ -127,15 +116,11 @@ const CampersList = ({ mode, filters }) => {
                 <ul className={styles.camperDetailsList}>
                   <li className={styles.camperDetail}>
                     <Icon id={"people"} width={20} height={20} />
-                    <p className={styles.camperDetailText}>
-                      {camper.adults} Adults
-                    </p>
+                    <p className={styles.camperDetailText}>{camper.adults} Adults</p>
                   </li>
                   <li className={styles.camperDetail}>
                     <Icon id={"transmission"} width={20} height={20} />
-                    <p className={styles.camperDetailText}>
-                      {camper.transmission}
-                    </p>
+                    <p className={styles.camperDetailText}>{camper.transmission}</p>
                   </li>
                   <li className={styles.camperDetail}>
                     <Icon id={"petrol"} width={20} height={20} />
@@ -165,14 +150,11 @@ const CampersList = ({ mode, filters }) => {
             </li>
           ))
         ) : (
-          <div
-            className={`${styles.camperContent} ${styles.noVehicleContainer}`}
-          >
-            {" "}
+          <div className={`${styles.camperContent} ${styles.noVehicleContainer}`}>
             <span>No vehicle found</span>
           </div>
         )}
-        {(items.length < totalCount && (
+        {items.length < totalCount && (
           <button
             type="button"
             className={styles.loadMoreButton}
@@ -180,14 +162,10 @@ const CampersList = ({ mode, filters }) => {
           >
             Load more
           </button>
-        )) || <div className="camperContent noVehicleContainer"></div>}
+        )}
       </ul>
       {modalIsOpen && (
-        <ModalWindow
-          isOpen={modalIsOpen}
-          closeModal={closeModal}
-          camper={selectedCamper}
-        />
+        <ModalWindow isOpen={modalIsOpen} closeModal={closeModal} camper={selectedCamper} />
       )}
     </>
   );
