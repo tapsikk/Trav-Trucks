@@ -226,7 +226,7 @@
   } 
 }
 
-@media (max-width: 767px) {
+@media (max-width: 769px) {
   .campersList {
     gap: 16px;
     margin-bottom: 30px;

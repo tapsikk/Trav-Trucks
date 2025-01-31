@@ -20,6 +20,7 @@ const CampersList = ({ mode, filters }) => {
   const favCampers = useSelector(selectAllFavCampers);
   const totalCount = useSelector(selectTotalCount);
   const items = mode === "catalogue" ? campers : favCampers;
+  
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedCamper, setCamper] = useState({});
