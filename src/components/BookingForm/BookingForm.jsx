@@ -8,7 +8,7 @@ import styles from "./BookingForm.module.css";
 const BookingForm = () => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [isSubmitted, setIsSubmitted] = useState(false); // Добавлено состояние для успешной отправки
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const validationSchema = Yup.object({
     name: Yup.string().min(2, "Too short").required("Required field"),

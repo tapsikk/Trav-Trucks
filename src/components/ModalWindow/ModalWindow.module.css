@@ -4,12 +4,10 @@
   border-radius: 20px;
   border: none;
   padding: 40px 0 0;
-
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   width: 982px;
   height: 720px;
 
@@ -61,7 +59,6 @@
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
-
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
@@ -87,7 +84,6 @@
 .camperImgContainer {
   display: flex;
   gap: 16px;
-
   margin-bottom: 24px;
 }
 
@@ -137,4 +133,102 @@
   width: 85px;
   height: 5px;
   background-color: var(--button);
+}
+
+/* ============= Tablet ============= */
+
+@media (max-width: 1024px) {
+  .modalWindow {
+    width: 90%;
+    height: auto;
+    max-height: 80vh;
+    padding: 20px 0;
+  }
+  
+  .noScrollContent {
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+  
+  .scrollbarContainer {
+    max-height: 40vh;
+    padding: 0 20px;
+  }
+  
+  .closeModalButton {
+    top: 20px;
+    right: 20px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .camperImg {
+    width: auto;
+  }
+  
+  .camperName,
+  .camperPrice {
+    font-size: 20px;
+  }
+  
+.camperImgContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .switcherElement {
+    font-size: 18px;
+  }
+  
+  .switcherElementActive::after {
+    width: 70px;
+    bottom: -20px;
+  }
+}
+
+/* ============= Mobile ============= */
+@media (max-width: 600px) {
+  .modalWindow {
+    width: 95%;
+    height: auto;
+    max-height: 80vh;
+    padding: 15px 0;
+  }
+  
+  .noScrollContent {
+    padding: 0 10px;
+    margin-bottom: 16px;
+  }
+  
+  .scrollbarContainer {
+    max-height: 35vh;
+    padding: 0 10px;
+  }
+  
+  .closeModalButton {
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .camperName,
+  .camperPrice {
+    font-size: 18px;
+  }
+  
+  .camperRatingAndLocation {
+    font-size: 12px;
+    gap: 8px;
+  }
+  
+  .switcherElement {
+    font-size: 16px;
+  }
+  
+  .switcherElementActive::after {
+    width: 60px;
+    bottom: -18px;
+  }
 }
