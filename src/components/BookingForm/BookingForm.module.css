@@ -96,3 +96,11 @@
   font-size: 16px;
   line-height: 150%;
 }
+
+
+/* ============= Mobile ============= */
+@media (max-width: 595px) {
+  .container {
+    width: 100%;
+  }
+}

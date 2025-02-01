@@ -39,3 +39,16 @@
   color: var(--main);
   text-transform: capitalize;
 }
+
+
+@media (max-width: 595px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .featuresContainer {
+    max-width: 100%;
+  }
+  
+}

@@ -21,3 +21,11 @@
   text-align: center;
   color: var(--main);
 }
+
+@media screen and (max-width: 595px) {
+  .camperDetailsList {
+    gap: 4px;
+    justify-content: center;
+  }
+  
+}
