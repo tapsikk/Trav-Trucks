@@ -67,3 +67,13 @@
   line-height: 150%;
   color: var(--text);
 }
+
+@media (max-width: 595px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .reviewsContainer {
+    width: 100%;
+  }
+}
