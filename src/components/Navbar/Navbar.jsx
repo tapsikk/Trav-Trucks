@@ -17,7 +17,6 @@ const Navbar = () => {
         >
           Home
         </NavLink>
-
         <NavLink
           to="/catalog"
           className={({ isActive }) =>
@@ -26,7 +25,6 @@ const Navbar = () => {
         >
           Catalog
         </NavLink>
-
         <NavLink
           to="/favorites"
           className={({ isActive }) =>

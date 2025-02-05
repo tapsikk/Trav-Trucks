@@ -4,11 +4,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: "Inter", sans-serif;
   color: var(--main-text);
-  
+  overflow: hidden;
 }
-html {
-  scrollbar-gutter: stable;
-}
+
 :root {
   --button: #e44848;
   --main: #101828;
@@ -61,30 +59,36 @@ img {
   height: auto;
 }
 
-.ps {
-  max-height: calc(100% - 40px);
-  overflow: hidden;
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
+.ps-container {
+  height: calc(100vh - 72px);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Стили для кастомного скроллбара */
 .ps__rail-y {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  right: 20px !important;
-}
-
-.ps__rail-y .ps__thumb-y {
-  border-radius: 7px;
+  right: 5px !important;
   width: 8px;
+  z-index: 1001;
 }
 
-.ps__rail-y .ps__thumb-y:hover {
-  background-color: #666666;
+.ps__thumb-y {
+  border-radius: 7px;
+  background-color: #999;
 }
 
-.ps__rail-y:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+.ps__rail-y:hover .ps__thumb-y {
+  background-color: #666;
 }
 
 .ps__rail-y.ps--clicking .ps__thumb-y {
-  background-color: #aaaaaa;
+  background-color: #444;
 }

@@ -161,6 +161,7 @@
     padding: 16px;
     font-size: 14px;
     border-radius: 8px;
+    max-width: 300px;
   }
 
   .filterButtonGroup {

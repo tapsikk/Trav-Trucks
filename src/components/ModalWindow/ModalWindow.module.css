@@ -3,7 +3,7 @@
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   border: none;
-  padding: 40px 0 0;
+  padding-top: 40px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -20,7 +20,7 @@
 }
 
 .scrollbarContainer {
-  max-height: 58vh;
+  max-height: 54vh;
   overflow: hidden;
   padding: 0 40px;
 }

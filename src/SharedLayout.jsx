@@ -1,15 +1,19 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import Loader from "./components/Loader/Loader";
+import PerfectScrollbar from "react-perfect-scrollbar";
+import "react-perfect-scrollbar/dist/css/styles.css";
 import Navbar from "./components/Navbar/Navbar";
+import Loader from "./components/Loader/Loader";
 
 const SharedLayout = () => {
   return (
-    <div>
+    <div className="layout-wrapper">
       <Navbar />
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+      <PerfectScrollbar className="ps-container">
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </PerfectScrollbar>
     </div>
   );
 };
