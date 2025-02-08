@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
+import ThemeButton from "../other/ThemeButton/ThemeButton";
 
 const Navbar = () => {
   return (
@@ -33,6 +34,9 @@ const Navbar = () => {
         >
           Favorites
         </NavLink>
+      </div>
+      <div className={styles.themeButtonContainer}>
+        <ThemeButton />
       </div>
     </nav>
   );

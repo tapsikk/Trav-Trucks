@@ -5,6 +5,7 @@ body {
   font-family: "Inter", sans-serif;
   color: var(--main-text);
   overflow: hidden;
+  background-color: var(--body);
 }
 
 :root {
@@ -97,21 +98,17 @@ img {
 /* style for theme */
 
 /* dark theme */
-
 html[data-theme="dark"] {
-  --main: #101828;
-  --inputs: #f7f7f7;
-  --block-features: #f2f4f7;
-  --rating: #ffc531;
-  --text: #475467;
+  --body: #121212;
+  --main: #ffffff;
+  --block-features: #000000;
+  --text: #ffffff;
 }
 
 /* light theme */
-
 html[data-theme="light"] {
-  --main: #ffffff;
-  --inputs: #f7f7f7;
+  --body: #ffffff;
+  --main: #000000;
   --block-features: #f2f4f7;
-  --rating: #ffc531;
   --text: #475467;
 }
