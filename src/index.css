@@ -71,7 +71,7 @@ img {
   position: relative;
 }
 
-/* Стили для кастомного скроллбара */
+/* style for scroll */
 .ps__rail-y {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 4px;
@@ -91,4 +91,27 @@ img {
 
 .ps__rail-y.ps--clicking .ps__thumb-y {
   background-color: #444;
+}
+
+
+/* style for theme */
+
+/* dark theme */
+
+html[data-theme="dark"] {
+  --main: #101828;
+  --inputs: #f7f7f7;
+  --block-features: #f2f4f7;
+  --rating: #ffc531;
+  --text: #475467;
+}
+
+/* light theme */
+
+html[data-theme="light"] {
+  --main: #ffffff;
+  --inputs: #f7f7f7;
+  --block-features: #f2f4f7;
+  --rating: #ffc531;
+  --text: #475467;
 }
