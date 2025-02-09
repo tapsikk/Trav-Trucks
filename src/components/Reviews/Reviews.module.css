@@ -55,7 +55,7 @@
 }
 
 .greyStar {
-  fill: var(--block-features);
+  fill: var(--rating-grey);
 }
 
 .yellowStar {

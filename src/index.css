@@ -103,6 +103,10 @@ html[data-theme="dark"] {
   --main: #ffffff;
   --block-features: #000000;
   --text: #ffffff;
+
+  --icon-color: #ffffff;
+  --rating: #ffc531;
+  --rating-grey: #ccc;
 }
 
 /* light theme */
@@ -111,4 +115,7 @@ html[data-theme="light"] {
   --main: #000000;
   --block-features: #f2f4f7;
   --text: #475467;
+
+  --rating: #ffc531;
+  --rating-grey: #ccc;
 }
