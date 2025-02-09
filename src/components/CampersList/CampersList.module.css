@@ -193,6 +193,9 @@
   border: 1px solid var(--button);
 }
 
+.star {
+  fill: var(--rating) !important;
+}
 
 /* ======== media ======== */
 

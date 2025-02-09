@@ -10,7 +10,6 @@
   transform: translate(-50%, -50%);
   width: 982px;
   height: 720px;
-
   overflow: hidden;
 }
 
@@ -133,6 +132,10 @@
   width: 85px;
   height: 5px;
   background-color: var(--button);
+}
+
+.star {
+  fill: var(--rating) !important;
 }
 
 /* ============= Tablet ============= */

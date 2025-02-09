@@ -103,7 +103,7 @@ const CampersList = ({ mode, filters }) => {
                 </div>
                 <div className={styles.camperRatingAndLocation}>
                   <div className={styles.camperRatingContainer}>
-                    <Icon id={"star"} width={25} height={25} fillColor="var(--rating)" />
+                  <Icon id="star" width={25} height={25} className={styles.star} />
                     <p className={styles.camperRating}>
                       {camper.rating} ({camper.reviews.length} Reviews)
                     </p>
