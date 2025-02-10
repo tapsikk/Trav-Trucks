@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #F2F4F7;
+  background-color: var(--block-features);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,23 +34,38 @@
 
 .navLinks {
   display: flex;
- 
   gap: 20px;
 }
 
 .navLink {
-  color: #101828;
+  color: var(--text);
 }
 
 .activeNavLink {
   color: #e44848;
+  text-shadow: 1px 1px 2px rgba(0, 17, 62, 0.5);
   transition: color 0.3s;
 }
 
+.themeButtonContainer{
+ position: absolute;
+ right: 64px;
+}
+
 @media screen and (max-width: 768px) {
+  .navbar {
+  gap: 15px;
+  }
+
+  .navLinks {
+   gap: 10px;
+  }
+
+  .themeButtonContainer{
+    position: static;
+  }
+
   .brand {
     display: none;
   }
-  
-  
 }

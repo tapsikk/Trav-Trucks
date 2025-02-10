@@ -44,7 +44,8 @@
   border: none;
   border-radius: 12px;
   font-size: 16px;
-  background-color: #f7f7f7;
+  background-color: var(--input);
+  /* background-color: #f7f7f7; */
 }
 
 .filterTitle {
@@ -96,6 +97,8 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  background-color: var(--body);
+  color: var(--main);
 }
 
 .filterButton img {
