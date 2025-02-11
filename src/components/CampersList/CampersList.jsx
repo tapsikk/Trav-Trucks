@@ -10,6 +10,7 @@ import { addToFavList, removeFromFavList } from "../../redux/user/slice";
 import { fetchCampers } from "../../redux/campers/operations";
 import { useEffect, useState } from "react";
 import ModalWindow from "../ModalWindow/ModalWindow";
+import { toast } from "react-toastify";
 
 const CampersList = ({ mode, filters }) => {
   const [page, setPage] = useState(1);
@@ -56,8 +57,10 @@ const CampersList = ({ mode, filters }) => {
     setTimeout(() => {
       if (!isCamperInFavList) {
         dispatch(addToFavList(camper));
+        toast.success("Added to favorites!");
       } else {
         dispatch(removeFromFavList(camper.id));
+        toast.info("Removed from favorites!");
       }
 
       setAnimatingFavs((prev) => ({
