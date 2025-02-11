@@ -9,18 +9,18 @@
   max-width: 48%;
 }
 
-.vehicleDetailsTItle {
+.vehicleDetailsTitle {
   font-weight: 600;
   font-size: 20px;
   line-height: 120%;
-  color: var(--main);
+  color: var(--text);
 }
 
 .stick {
   display: block;
   height: 1px;
   width: 100%;
-  background-color: rgba(16, 24, 40, 0.1);
+  background-color: var(--text);
   margin: 24px 0;
 }
 
@@ -33,7 +33,6 @@
 .vehicleDetailsListItem {
   display: flex;
   justify-content: space-between;
-
   font-weight: 500;
   font-size: 18px;
   line-height: 133%;
