@@ -4,11 +4,12 @@ import * as Yup from "yup";
 import CustomCalendar from "../CustomCalendar/CustomCalendar";
 import Icon from "../Icon/Icon";
 import styles from "./BookingForm.module.css";
+import { toast } from "react-toastify";
 
 const BookingForm = () => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted] = useState(false);
 
   const validationSchema = Yup.object({
     name: Yup.string().min(2, "Too short").required("Required field"),
@@ -32,10 +33,9 @@ const BookingForm = () => {
 
   const onSubmit = (values, { resetForm }) => {
     console.log("Form submitted with values:", values);
-    setIsSubmitted(true); // Устанавливаем состояние для успешной отправки
-    resetForm(); // Очищаем форму после отправки
-    setSelectedDate(null); // Сбрасываем выбранную дату
-    setTimeout(() => setIsSubmitted(false), 3000); // Убираем уведомление через 3 секунды
+    toast.success("Camper booked successfully!");
+    resetForm();
+    setSelectedDate(null);
   };
 
   return (
