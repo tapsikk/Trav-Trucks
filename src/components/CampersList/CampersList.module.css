@@ -25,6 +25,7 @@
 }
 
 .camperContent {
+  color: var(--text);
   max-width: 526px;
 }
 

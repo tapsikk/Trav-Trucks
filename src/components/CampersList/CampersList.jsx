@@ -11,6 +11,7 @@ import { fetchCampers } from "../../redux/campers/operations";
 import { useEffect, useState } from "react";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import { toast } from "react-toastify";
+import createBubbleEffect from "./BubbleEffect";
 
 const CampersList = ({ mode, filters }) => {
   const [page, setPage] = useState(1);
@@ -22,7 +23,6 @@ const CampersList = ({ mode, filters }) => {
   const totalCount = useSelector(selectTotalCount);
   const items = mode === "catalogue" ? campers : favCampers;
   
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedCamper, setCamper] = useState({});
   const [animatingFavs, setAnimatingFavs] = useState({});
@@ -44,16 +44,21 @@ const CampersList = ({ mode, filters }) => {
     setModalIsOpen(false);
   };
 
-  const toggleFav = (camper) => {
+  const toggleFav = (camper, e) => {
+    const buttonElement = e.currentTarget || e.target;
     const isCamperInFavList = favCampers.some(
       (favCamper) => favCamper.id === camper.id
     );
-
+  
+    if (!isCamperInFavList) {
+      createBubbleEffect(buttonElement);
+    }
+  
     setAnimatingFavs((prev) => ({
       ...prev,
       [camper.id]: isCamperInFavList ? "removing" : "animated",
     }));
-
+  
     setTimeout(() => {
       if (!isCamperInFavList) {
         dispatch(addToFavList(camper));
@@ -62,7 +67,6 @@ const CampersList = ({ mode, filters }) => {
         dispatch(removeFromFavList(camper.id));
         toast.info("Removed from favorites!");
       }
-
       setAnimatingFavs((prev) => ({
         ...prev,
         [camper.id]: "",
@@ -93,7 +97,7 @@ const CampersList = ({ mode, filters }) => {
                     <button
                       type="button"
                       aria-label="Add to favourites"
-                      onClick={() => toggleFav(camper)}
+                      onClick={(e) => toggleFav(camper, e)}
                       className={`${styles.favButton} ${
                         styles[animatingFavs[camper.id]] || ""
                       }`}
@@ -106,7 +110,7 @@ const CampersList = ({ mode, filters }) => {
                 </div>
                 <div className={styles.camperRatingAndLocation}>
                   <div className={styles.camperRatingContainer}>
-                  <Icon id="star" width={25} height={25} className={styles.star} />
+                    <Icon id="star" width={25} height={25} className={styles.star} />
                     <p className={styles.camperRating}>
                       {camper.rating} ({camper.reviews.length} Reviews)
                     </p>
@@ -158,7 +162,7 @@ const CampersList = ({ mode, filters }) => {
             <span>No vehicle found</span>
           </div>
         )}
-        {items.length < totalCount && (
+        {mode === "catalogue" && items.length < totalCount && (
           <button
             type="button"
             className={styles.loadMoreButton}

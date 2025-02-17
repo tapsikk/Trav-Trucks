@@ -173,7 +173,7 @@
   }
 
   .filterButton {
-    width: 120px;
+    width: 90px;
     height: 88px;
     font-size: 14px;
     padding: 4px;
@@ -193,7 +193,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 808px) {
   .filterContainer {
     padding: 12px;
   }

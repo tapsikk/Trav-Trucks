@@ -1,0 +1,18 @@
+.bubble {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: var(--button);
+    border-radius: 50%;
+    opacity: 1;
+    pointer-events: none;
+    animation: bubble 0.8s ease-out forwards;
+  }
+  
+  @keyframes bubble {
+    to {
+      transform: translate(var(--x), var(--y)) scale(1.5);
+      opacity: 0;
+    }
+  }
+  
