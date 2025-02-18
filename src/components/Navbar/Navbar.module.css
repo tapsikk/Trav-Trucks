@@ -24,6 +24,19 @@
   }
 }
 
+html[data-theme='dark'] .brand{
+  color: #ff5454;
+}
+
+html[data-theme='dark'] .brand:hover{
+  color: #e44848;
+}
+
+html[data-theme='dark'] .brandSub{
+  color: #f7f7f7;
+}
+
+
 .brand:hover{
   cursor: pointer;
   color: #e44848;

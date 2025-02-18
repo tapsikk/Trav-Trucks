@@ -113,9 +113,9 @@ html[data-theme="light"] {
 
 /* dark theme */
 html[data-theme="dark"] {
-  --body: #101218;
+  --body: #1e1f22;
   --main: #ffffff;
-  --block-features: #8c8d92;
+  --block-features: #313338;
   --text: #ffffff;
   --input: #ccc;
 
