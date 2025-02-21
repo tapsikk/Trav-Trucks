@@ -95,6 +95,14 @@ img {
   background-color: #444;
 }
 
+@media screen and (max-width: 595px) {
+  .ps-container {
+    overflow: hidden !important;
+  }
+  .ps__rail-y {
+    display: none !important;
+  }
+}
 /* style for theme */
 
 
