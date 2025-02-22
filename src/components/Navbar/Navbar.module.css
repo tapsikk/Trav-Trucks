@@ -74,11 +74,23 @@ html[data-theme='dark'] .brandSub{
    gap: 10px;
   }
 
-  .themeButtonContainer{
-    position: static;
+  .themeButtonContainer {
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    z-index: 1100; /* чтобы она была поверх остальных элементов */
   }
 
   .brand {
     display: none;
   }
+}
+
+@media screen and (max-width: 400px) {
+  .navbar {
+    justify-content: space-between;
+    padding: 10px;
+    gap: 15px;
+    }
+  
 }
