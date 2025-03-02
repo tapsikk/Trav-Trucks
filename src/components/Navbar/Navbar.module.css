@@ -78,7 +78,7 @@ html[data-theme='dark'] .brandSub{
     position: fixed;
     top: 20px;
     right: 10px;
-    z-index: 1100; /* чтобы она была поверх остальных элементов */
+    z-index: 1100;
   }
 
   .brand {
@@ -92,5 +92,4 @@ html[data-theme='dark'] .brandSub{
     padding: 10px;
     gap: 15px;
     }
-  
 }

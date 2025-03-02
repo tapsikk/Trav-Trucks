@@ -13,6 +13,7 @@
   overflow: hidden;
 }
 
+
 .noScrollContent {
   padding: 0 40px;
   margin-bottom: 24px;
@@ -234,9 +235,7 @@ html[data-theme="dark"] .switcherContainer {
 
   .scrollbarContainer {
     overflow: hidden;
-    padding: 0 40px;
-    /* scrollbar-width: none; */
-    
+    padding: 0 40px;    
   }
 }
 
