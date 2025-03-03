@@ -151,7 +151,7 @@ const Filter = ({ filters, setFilters, applyFilters }) => {
         </div>
       </div>
 
-
+      <div className={styles.buttonContainer}>
           <button
             type="button"
             className={styles.filterApplyButton}
@@ -168,8 +168,8 @@ const Filter = ({ filters, setFilters, applyFilters }) => {
             >
               Reset
             </button>
-
-      )}
+          )}
+      </div>
     </div>
   );
 };
