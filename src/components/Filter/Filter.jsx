@@ -1,8 +1,13 @@
 import styles from "./Filters.module.css";
-
 import Icon from "../Icon/Icon";
 
 const Filter = ({ filters, setFilters, applyFilters }) => {
+  const initialFilters = {
+    location: "",
+    type: "",
+    equipment: [],
+  };
+
   const handleInputChange = (e) => {
     setFilters({
       ...filters,
@@ -24,47 +29,51 @@ const Filter = ({ filters, setFilters, applyFilters }) => {
     {
       iconName: "ac",
       filterName: "AC",
-      text: "AC"
+      text: "AC",
     },
     {
       iconName: "transmission",
       filterName: "transmission",
-      text: "Automatic"
+      text: "Automatic",
     },
     {
       iconName: "kitchen",
       filterName: "kitchen",
-      text: "Kitchen"
+      text: "Kitchen",
     },
     {
       iconName: "tv",
       filterName: "TV",
-      text: "TV"
+      text: "TV",
     },
     {
       iconName: "toilet",
       filterName: "bathroom",
-      text:"Bathroom"
+      text: "Bathroom",
     },
-    
-  ]
+  ];
+
   const vehicleTypeFilters = [
     {
       iconName: "van",
       filterName: "panelTruck",
-      text: "Van"
+      text: "Van",
     },
     {
       iconName: "fullyIntegrated",
       filterName: "fullyIntegrated",
-      text: "Fully Integrated"
+      text: "Fully Integrated",
     },
     {
       iconName: "alcove",
       filterName: "alcove",
-      text: "Alcove"
-    }
-  ]
+      text: "Alcove",
+    },
+  ];
+
+  let activeFiltersCount = 0;
+  if (filters.type) activeFiltersCount++;
+  if (filters.equipment && filters.equipment.length > 1) activeFiltersCount++;
 
   return (
     <div className={styles.filterContainer}>
@@ -72,8 +81,8 @@ const Filter = ({ filters, setFilters, applyFilters }) => {
         <label htmlFor="location" className={styles.filterLabel}>
           Location
         </label>
-        <label htmlFor="location" className={styles.filterInput}> 
-        <Icon id={"location"} width={25} height={25} />
+        <label htmlFor="location" className={styles.filterInput}>
+          <Icon id={"location"} width={25} height={25} />
           <input
             placeholder="Сountry, Сity..."
             type="text"
@@ -85,58 +94,82 @@ const Filter = ({ filters, setFilters, applyFilters }) => {
           />
         </label>
       </div>
-        <p className={styles.filterHeader} >Filters</p>
+      <p className={styles.filterHeader}>Filters</p>
       <div className={styles.filterSection}>
         <h4 className={styles.filterTitle}>Vehicle Equipment</h4>
         <div className={styles.filterButtonGroup}>
-          {vehicleEquipmentFilters.map((obj)=>{
-            return <button
-            key={obj.filterName}
-            type="button"
-            className={`${styles.filterButton} ${
-              filters.equipment.includes(obj.filterName) ? styles.active : ""
-              }`}
-              onClick={() =>
-                handleCheckboxChange({
-                  target: {
-                    name: obj.filterName,
-                    checked: !filters.equipment.includes(obj.filterName),
-                  },
-                })
-              }
+          {vehicleEquipmentFilters.map((obj) => {
+            return (
+              <button
+                key={obj.filterName}
+                type="button"
+                className={`${styles.filterButton} ${
+                  filters.equipment.includes(obj.filterName) ? styles.active : ""
+                }`}
+                onClick={() =>
+                  handleCheckboxChange({
+                    target: {
+                      name: obj.filterName,
+                      checked: !filters.equipment.includes(obj.filterName),
+                    },
+                  })
+                }
               >
-            <Icon id={obj.iconName} width={25} height={25} />
-            {obj.text}
-          </button>})}
+                <Icon id={obj.iconName} width={25} height={25} />
+                {obj.text}
+              </button>
+            );
+          })}
         </div>
       </div>
 
       <div className={styles.filterSection}>
         <h4 className={styles.filterTitle}>Vehicle Type</h4>
         <div className={styles.filterButtonGroup}>
-        {vehicleTypeFilters.map((obj)=>{
-            return <button
-            key={obj.filterName}
-            type="button"
-            className={`${styles.filterButton} ${
-              filters.type === obj.filterName ? styles.active : ""
-            }`}
-            onClick={() =>
-              handleInputChange({ target: { name: "type", value: obj.filterName === filters.type ? null : obj.filterName } })
-            }
-          >
-            <Icon id={obj.iconName} width={25} height={25} />
-            {obj.text}
-          </button>})}
+          {vehicleTypeFilters.map((obj) => {
+            return (
+              <button
+                key={obj.filterName}
+                type="button"
+                className={`${styles.filterButton} ${
+                  filters.type === obj.filterName ? styles.active : ""
+                }`}
+                onClick={() =>
+                  handleInputChange({
+                    target: {
+                      name: "type",
+                      value: obj.filterName === filters.type ? null : obj.filterName,
+                    },
+                  })
+                }
+              >
+                <Icon id={obj.iconName} width={25} height={25} />
+                {obj.text}
+              </button>
+            );
+          })}
         </div>
       </div>
-      <button
-        type="button"
-        className={styles.filterApplyButton}
-        onClick={applyFilters}
-      >
-        Search
-      </button>
+
+
+          <button
+            type="button"
+            className={styles.filterApplyButton}
+            onClick={applyFilters}
+          >
+            Search
+          </button>
+          
+          {activeFiltersCount > 1 && (
+            <button
+              type="button"
+              className={styles.resetButton}
+              onClick={() => setFilters(initialFilters)}
+            >
+              Reset
+            </button>
+
+      )}
     </div>
   );
 };

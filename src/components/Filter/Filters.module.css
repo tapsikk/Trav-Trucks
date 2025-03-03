@@ -1,3 +1,6 @@
+/* Filters.module.css */
+
+/* Основные стили компонента фильтра */
 .filterContainer {
   padding: 16px;
   border-radius: 8px;
@@ -49,7 +52,6 @@ html[data-theme="dark"] .filterLabel {
   border-radius: 12px;
   font-size: 16px;
   background-color: var(--input);
-  /* background-color: #f7f7f7; */
 }
 
 .filterTitle {
@@ -93,7 +95,8 @@ html[data-theme="dark"] .filterLabel {
   width: 100px;
   padding: 6px;
   height: 96px;
-  background-color: #ffffff;
+  background-color: var(--body);
+  color: var(--main);
   border: 1px solid #d0d5dd;
   border-radius: 8px;
   display: flex;
@@ -101,9 +104,10 @@ html[data-theme="dark"] .filterLabel {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background-color: var(--body);
-  color: var(--main);
+  transition: border-color 0.125s ease-in-out, box-shadow 0.125s ease-in-out;
 }
+
+
 
 .filterButton img {
   margin-bottom: 8px;
@@ -111,6 +115,7 @@ html[data-theme="dark"] .filterLabel {
 
 .filterButton.active {
   border-color: #e44848;
+  box-shadow: #cc3e3e 0px 0px 0px 1px;
 }
 
 .filterApplyButton {
@@ -124,6 +129,22 @@ html[data-theme="dark"] .filterLabel {
   font-weight: 500;
   border-radius: 200px;
   cursor: pointer;
+  transition: background-color 0.125s ease-in-out;
+}
+
+.resetButton {
+  width: 166px;
+  height: 56px;
+  padding: 12px;
+  background-color: #d4d4d4;
+  color: #000000;
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 500;
+  border-radius: 200px;
+  cursor: pointer;
+  transition: 0.125s ease-in-out;
+  
 }
 
 .filterApplyButton:hover {
@@ -132,10 +153,10 @@ html[data-theme="dark"] .filterLabel {
 
 .filterApplyButton:active {
   background-color: #b13434;
+  transition: 0.125s ease-in-out;
 }
 
-
-/* ======== media ======== */
+/* ======== Media Queries ======== */
 
 @media (max-width: 1345px) {
   .filterContainer {
@@ -143,26 +164,21 @@ html[data-theme="dark"] .filterLabel {
     width: auto;
     padding: 16px 12px;
   }
-
   .filterHeader {
     font-size: 14px;
     margin-bottom: 16px;
   }
-
   .filterTitle {
     font-size: 18px;
     margin-bottom: 16px;
   }
-
   .filterSection {
     margin-bottom: 20px;
   }
-
   .filterLabel {
     font-size: 14px;
     gap: 6px;
   }
-
   .filterInput {
     height: 48px;
     padding: 16px;
@@ -170,25 +186,21 @@ html[data-theme="dark"] .filterLabel {
     border-radius: 8px;
     max-width: 300px;
   }
-
   .filterButtonGroup {
     gap: 8px;
     padding-top: 16px;
   }
-
   .filterButton {
     width: 90px;
     height: 88px;
     font-size: 14px;
     padding: 4px;
   }
-
   .filterButton img {
     margin-bottom: 6px;
     max-width: 24px;
     max-height: 24px;
   }
-
   .filterApplyButton {
     width: 150px;
     height: 48px;
@@ -201,19 +213,16 @@ html[data-theme="dark"] .filterLabel {
   .filterContainer {
     padding: 12px;
   }
-
   .filterHeader,
   .filterTitle {
     font-size: 16px;
     text-align: center;
   }
-
   .filterButtonGroup {
     flex-direction: column;
     align-items: center;
     gap: 12px;
   }
-
   .filterButton {
     width: 100%;
     max-width: 250px;
@@ -222,12 +231,10 @@ html[data-theme="dark"] .filterLabel {
     flex-direction: row;
     justify-content: flex-start;
   }
-
   .filterButton img {
     margin-right: 8px;
     margin-bottom: 0;
   }
-
   .filterApplyButton {
     width: 100%;
   }
